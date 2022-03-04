@@ -4,13 +4,15 @@ module.exports = async function (fastify, opts) {
   fastify.patch('/voteroom/:id/vote', async function (request, reply) {
    // const getinfo = async (authorization) => const {data} = await APi.get ('/voteroom/:id') 
     const result = await update(mogoDB,request.params.id, request.body)
-    
-    req headers
+    const
+    //req headers
+        
+
         {
           "authorization": "authorization token"
-          
+
         }
-        req body
+     ///   req body
         {
           "choice_list": {
               "돼지국밥": 1,
