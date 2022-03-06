@@ -3,14 +3,23 @@ const { ObjectId } = require('fastify-mongodb')
 module.exports = {
   readAll: async (mongo) => {
     const collection = mongo.db.collection(process.env.COLLECTION_NAME)
-    const result = await collection.find({}).toArray()
+    const result = await collection.find({private:false}).toArray()
     return result
   },
-  readOne: async (mongo, id) => {
+  readPublicOne: async (mongo, id) => {
     const collection = mongo.db.collection(process.env.COLLECTION_NAME)
-    const result = await collection.findOne({
-      _id: ObjectId(id)
-    })
+    const result = await collection.findOne(
+      {_id: ObjectId(id)},
+      {private: false}
+      )
+    return result
+  },
+  readPrivateOne: async (mongo, id, pw) => {
+    const collection = mongo.db.collection(process.env.COLLECTION_NAME)
+    const result = await collection.findOne(
+      {
+        _id: ObjectId(id),password: pw
+      })
     return result
   },
   createOne: async (mongo, body) => {
