@@ -18,23 +18,22 @@ module.exports = async function (fastify, opts) {
   fastify.get('/:id', async function (request, reply) {
     const result = await readPublicOne(this.mongo, request.params.id)
 
-    if (result.private){
+    if (result){
       reply
-      .code(404)
-      .header()
+      .code(200)
+      .header('content-type', 'application/json')
       .send(result)
     }
     else{
       reply
-      .code(200)
-      .header('content-type', 'application/json')
+      .code(404)
+      .header()
       .send(result)
     }
   })
 
   // 비공개 투표 1개 조회
   fastify.post('/:id', async function (request, reply) {
-    console.log(request.body.password)
     const result = await readPrivateOne(this.mongo, request.params.id, request.body.password)
     console.log(result)
     if (result){
