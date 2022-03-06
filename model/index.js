@@ -9,16 +9,23 @@ module.exports = {
       .toArray()
     return result
   },
+  readOne: async (mongo, id) => {
+    const collection = mongo.db.collection(process.env.COLLECTION_NAME)
+    const result = await collection.findOne({
+      _id: ObjectId(id)
+    })
+    return result
+  },
   readPublicOne: async (mongo, id) => {
     const collection = mongo.db.collection(process.env.COLLECTION_NAME)
     const result = await collection.findOne(
-      {_id: ObjectId(id), private: false}, {password: 0, email:0}) 
+      {_id: ObjectId(id), private: false}, { projection: {password: 0, email:0}}) 
     return result
   },
   readPrivateOne: async (mongo, id, pw) => {
     const collection = mongo.db.collection(process.env.COLLECTION_NAME)
     const result = await collection.findOne(
-      {_id: ObjectId(id),password: pw}, {password: 0, email:0})
+      {_id: ObjectId(id), password: pw}, { projection: {password: 0, email:0}})
     return result
   },
   createOne: async (mongo, body) => {
