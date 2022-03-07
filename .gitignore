@@ -59,4 +59,4 @@ profile*
 
 # configuration
 .env
-*.json
+package.json
