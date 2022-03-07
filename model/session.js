@@ -11,15 +11,10 @@ module.exports = {
   },
   updateSessionOne: async (mongo, sessionId, voteId) => {
     const collection = mongo.db.collection(process.env.COLLECTION_SESSION)
-    let sessionResult = await collection.findOne({
-        _id: ObjectId(sessionId)
-      })
-    sessionResult.voted_list = sessionResult.vote_list.push(voteId)
-
     const result = await collection.findOneAndUpdate({
       _id: ObjectId(sessionId)
     }, {
-      $set: sessionResult
+      $push: { voted_list:voteId }
     })
     return result
   }
