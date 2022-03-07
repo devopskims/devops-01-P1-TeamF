@@ -16,8 +16,8 @@
 - 사용자는 투표를 삭제할 수 있다.
 - 투표를 만든 사용자는 투표가 삭제된 후 이메일로 결과를 받아볼 수 있다. ⇒ 구현 X
 
-## [API 개요](#https://github.com/cs-devops-bootcamp/devops-01-P1-TeamF/blob/master/API.md)
-## [ERD 개요](#https://github.com/cs-devops-bootcamp/devops-01-P1-TeamF/blob/master/ERD.png)
+## [API 개요](https://github.com/cs-devops-bootcamp/devops-01-P1-TeamF/blob/master/API.md)
+## [ERD 개요](https://github.com/cs-devops-bootcamp/devops-01-P1-TeamF/blob/master/ERD.png)
 ----
 </br>
 
