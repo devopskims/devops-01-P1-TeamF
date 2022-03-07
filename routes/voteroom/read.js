@@ -6,7 +6,7 @@ module.exports = async function (fastify, opts) {
 
   // 전체 조회
   fastify.get('/', async function (request, reply) {
-    const result = await readAll(this.mongo)
+    const result = await readPublicAll(this.mongo)
     
     reply
       .code(200)
