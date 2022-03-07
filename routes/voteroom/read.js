@@ -1,6 +1,6 @@
 'use strict'
 
-const { readAll, readOne, readPublicOne, readPrivateOne } = require('../../model')
+const { readPublicAll, readOne, readPublicOne, readPrivateOne } = require('../../model')
 
 module.exports = async function (fastify, opts) {
 
