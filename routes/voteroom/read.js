@@ -1,6 +1,6 @@
 'use strict'
 
-const { readPublicAll, readOne, readPublicOne, readPrivateOne } = require('../../model')
+const { readPublicAll, readPublicOne, readPrivateOne } = require('../../model')
 
 module.exports = async function (fastify, opts) {
 
@@ -15,6 +15,7 @@ module.exports = async function (fastify, opts) {
   })
 
 
+  // 공개투표 1개 조회
   fastify.get('/:id', async function (request, reply) {
     const result = await readPublicOne(this.mongo, request.params.id)
 
@@ -48,7 +49,5 @@ module.exports = async function (fastify, opts) {
       .header()
       .send(result)
     }
-
-
   })
 }
